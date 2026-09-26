@@ -4,6 +4,8 @@
 [![CI](https://github.com/sanoylab/sanoy-ai-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/sanoylab/sanoy-ai-workflow/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+Website: [sanoylab.github.io/sanoy-ai-workflow](https://sanoylab.github.io/sanoy-ai-workflow/)
+
 **Sanoy: an agentic AI development workflow for Claude Code that keeps you in control and teaches you the code it writes.**
 
 Sanoy is Yonas spelled backwards: the workflow was extracted from a real production project and generalized so anyone can use it.
