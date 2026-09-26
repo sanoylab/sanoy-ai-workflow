@@ -6,11 +6,13 @@
 
 Website: [sanoylab.github.io/sanoy-ai-workflow](https://sanoylab.github.io/sanoy-ai-workflow/)
 
-**Sanoy: an agentic AI development workflow for Claude Code that keeps you in control and teaches you the code it writes.**
+**Sanoy: an agentic AI development workflow for Claude Code. The agent plans, builds, and ships. The engineer stays in the loop at the decisions that matter, and the codebase stays something you can fix and extend by hand.**
 
-Sanoy is Yonas spelled backwards: the workflow was extracted from a real production project and generalized so anyone can use it.
+Sanoy is Yonas spelled backwards: the workflow was extracted from a real production project and generalized so anyone can use it. It is one workflow among many, the middle ground I use on most of my projects, not an ultimate guide. On some projects I let agents run far ahead; on others I keep them on a short leash. This is what works for most of my cases.
 
-Vibe coding is fast until you have to change something you do not understand. This kit gives Claude Code a repeatable loop with review gates, one living document per feature, a build gate that runs before the agent stops, a fresh-eyes reviewer, and a learning system so the codebase never becomes a black box.
+Vibe coding is fast until you have to change something you do not understand. Reviewing every line is not the answer either: an agent writes more code in an afternoon than anyone reads carefully for long, and a review habit that quietly decays is a false safety net. This kit gives Claude Code a repeatable loop with two review gates (the plan and the ship), one living document per feature, a build gate that runs before the agent stops, a fresh-eyes reviewer, and a learning system whose goal is understanding: when something breaks in production you can trace it, and when a feature is needed you can add it, with or without an agent.
+
+Planning, building, and shipping with an agent are the easy parts now, and the agents get better every month. The human still belongs in the loop for the foreseeable future: even one hundred percent correct code is not the same as the code you intended, and someone has to decide what the system should do and own what runs in production.
 
 ```bash
 npx sanoy-ai-workflow init        # in any project, new or existing
@@ -38,7 +40,7 @@ ANY TIME       /status    where am I, what is open, what next
 - **A build gate that cannot be skipped.** A Stop hook fingerprints your source changes and rebuilds before Claude ends its turn; on errors it blocks and feeds them back. Runs on Node, so it behaves the same on Windows, macOS, and Linux.
 - **Review gates where they matter.** You approve the plan before code, and the result before the PR. In between, the agent runs autonomously with an explicit stop-and-ask list (unplanned migrations, shared infrastructure, security behavior, scope creep).
 - **Fresh-eyes review.** A read-only `reviewer` subagent checks correctness, architecture rules, data access, security, tests, and scope before anything ships.
-- **Learn while you ship.** Three learning modes (`auto`, `pair`, `coach`), a per-feature walkthrough, `/learn ... quiz`, and a handbook (`docs/handbook/`) written for a developer working without AI.
+- **Understand what shipped.** The part that matters most. A walkthrough after every build (one request traced file by file), three build modes (`auto`, `pair`, `coach`), `/learn ... quiz`, and a handbook (`docs/handbook/`) written for a developer working without AI. Review tells you whether today's diff is right; understanding tells you whether you can handle tomorrow's bug.
 - **Git remembers.** Every commit carries `Feature: <slug>` and, when known, a work item link.
 - **Works with other agents too.** State lives in markdown; `AGENTS.md` points Codex, OpenCode, or Copilot at the same files.
 
@@ -90,10 +92,13 @@ A bug report: `/change "the CSV export drops the last row"`: Claude resolves the
 
 ## Philosophy
 
+- Planning, building, and shipping are the easy parts now. Understanding is the hard part, and the one worth designing for.
+- The engineer is in the loop at the decisions, not at the keystrokes. Review where a decision has consequences; do not pretend to read every line.
+- Agents are incredibly powerful and improving fast. The human stays in the loop anyway, because correct is not the same as intended and someone owns production.
 - Ask less, decide more, and write the decisions down where the developer can overrule them by reading.
 - The truth about a feature lives next to the feature, not in a chat transcript.
 - Verification is a hook, not a promise.
-- The goal is a developer who could keep working if the AI disappeared tomorrow.
+- The goal is an engineer who could fix the next bug and add the next feature if the AI disappeared tomorrow.
 
 ## Roadmap and ideas
 
