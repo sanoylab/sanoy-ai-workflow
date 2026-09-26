@@ -2,12 +2,12 @@
 title: Agentic Engineering With the Engineer in the Loop
 slug: agentic-engineering-with-the-engineer-in-the-loop
 date: 2026-09-26
-summary: I open-sourced the Claude Code workflow I use on most of my projects. It lets the AI plan, build, and ship, keeps me on the decisions that matter, and makes the AI teach me what it built.
+summary: I open-sourced the Claude Code workflow I use on most of my projects. The AI plans, builds, and ships; I stay on the decisions that matter; and the codebase stays something I can fix and extend by hand.
 ---
 
 I open-sourced my Claude Code workflow this week. It is called Sanoy (my name backwards, nothing deeper than that), it installs with one command, and it is the way I have been building software with AI agents for most of this year.
 
-Before I explain it, one thing up front: this is not an ultimate guide. There are a lot of good ways to do agentic engineering right now. Loop-based flows, graph-based orchestration, fully autonomous agents that run for hours, and very careful setups where the AI never touches a file without a human reading the diff. I have used several of them. On some projects I let the agents run far ahead. On others, mostly security-critical or unfamiliar code, I go line by line. What I am sharing here is the middle ground, the workflow I reach for on roughly two out of three projects. It works for most of my use cases. It may or may not work for yours.
+Before I explain it, one thing up front: this is not an ultimate guide. There are a lot of good ways to do agentic engineering right now. Loop-based flows, graph-based orchestration, fully autonomous agents that run for hours, and tightly scoped setups where the agent only ever gets small, well-defined tasks. I have used several of them. On some projects I let the agents run far ahead. On others I keep them on a short leash with small tasks and frequent checkpoints. What I am sharing here is the middle ground, the workflow I reach for on roughly two out of three projects. It works for most of my use cases. It may or may not work for yours.
 
 ## The problem I actually wanted to solve
 
@@ -17,11 +17,11 @@ Letting an AI agent generate all of that code is easy now. The hard part is what
 
 So the question I kept asking was: how do I get the speed of an agent without ending up with a system nobody on the team can explain?
 
-The usual answer is "review everything." I tried that. Reading every diff an agent produces is slower than writing the code yourself, and after a week you stop reading carefully anyway. That is babysitting, and babysitting does not scale.
+The usual answer is "review everything." Let's be honest about that one. An agent produces more code in an afternoon than a team used to produce in a week. Nobody reads all of it, and nobody keeps reading it carefully for long. Review still matters, and I do it at the points where a decision has consequences. But a review habit that quietly decays is a false safety net, because you still believe you have it.
 
 The other answer is "trust the agent." That works until the first change request.
 
-I wanted something in between: the engineer stays in the loop, but only at the points where a human decision actually matters. Everything else runs on its own, and the system itself checks the work.
+What I wanted was not a better way to review the AI's code. It was a way to understand the system the AI produces, well enough that when something breaks I can find it and fix it, and when a feature is needed I can add it, with or without an agent in the room. Review tells you whether today's diff is right. Understanding tells you whether you can handle tomorrow's bug. So the workflow keeps the engineer in the loop at the two decisions that matter, lets the system verify the rest, and spends the saved time on understanding instead.
 
 ## What the workflow looks like
 
@@ -69,9 +69,9 @@ This is what makes the fix-and-change lane possible. The agent loads the feature
 
 ## The part I care about most
 
-Planning, building, and shipping with an agent is a solved problem. Plenty of tools do it well. The part I wanted to solve is learning.
+Planning, building, and shipping with an agent is a solved problem. Plenty of tools do it well. The part I wanted to solve is understanding: the codebase should stay something I can work in by hand.
 
-If the agents disappeared tomorrow, I should still be able to fix a bug in this system, add a feature to it, and explain it on a whiteboard. That is the bottom line of the whole workflow. Speed is nice. Owning the system is the point.
+If the agents disappeared tomorrow, I should still be able to fix a bug in this system, add a feature to it, and explain it on a whiteboard. When something goes wrong in production, the engineer should be able to find the cause without an AI. When the business asks for one more field on a form, the engineer should be able to add it without an AI. That is the bottom line of the whole workflow. Speed is nice. Owning the system is the point.
 
 So the workflow makes the AI teach me what it implemented, while it is fresh:
 
@@ -88,7 +88,7 @@ I want to be precise about this, because "human in the loop" can sound like an e
 
 On the enterprise systems I work on, someone has to confirm that what shipped is what was asked for, that the data model change is the one we want to live with, that the permission check is on the right action. Those are engineering decisions with consequences that outlast the sprint. An agent can propose them. It should not make them silently.
 
-That is different from watching the agent type. Two gates per feature, plan and ship, plus a short stop-and-ask list. Everything else is automated, verified by hooks and a second agent, and documented so I can review at my own pace. The engineer is in the loop at the decisions, not at the keystrokes. That is what I mean by using AI in a safe, efficient, and productive way, and it is the opposite of babysitting.
+That is different from watching the agent type, and it is different from pretending to read every line. Two gates per feature, plan and ship, plus a short stop-and-ask list. Everything else is automated, verified by hooks and a second agent, and written down so I can understand it at my own pace. The engineer is in the loop at the decisions, not at the keystrokes, and stays capable of working in the code afterwards. That is what I mean by using AI in a safe, efficient, and productive way, and it is the opposite of babysitting.
 
 ## Where it came from
 
