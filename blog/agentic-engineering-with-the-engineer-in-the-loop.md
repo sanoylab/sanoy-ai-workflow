@@ -69,7 +69,7 @@ This is what makes the fix-and-change lane possible. The agent loads the feature
 
 ## The part I care about most
 
-Planning, building, and shipping with an agent is a solved problem. Plenty of tools do it well. The part I wanted to solve is understanding: the codebase should stay something I can work in by hand.
+Planning, building, and shipping with an agent are the easy parts now. Plenty of tools do them well, and the agents themselves get better every month. The hard part is understanding: the codebase should stay something I can work in by hand.
 
 If the agents disappeared tomorrow, I should still be able to fix a bug in this system, add a feature to it, and explain it on a whiteboard. When something goes wrong in production, the engineer should be able to find the cause without an AI. When the business asks for one more field on a form, the engineer should be able to add it without an AI. That is the bottom line of the whole workflow. Speed is nice. Owning the system is the point.
 
@@ -85,6 +85,8 @@ None of this slows the agent down. It changes what the agent produces at the end
 ## Why a human stays in the loop
 
 I want to be precise about this, because "human in the loop" can sound like an excuse for not trusting the tools.
+
+The agents are incredibly powerful today, and I expect them to keep getting better. I still do not see the human leaving the loop in the foreseeable future. Even if an agent produced code that was one hundred percent correct, correct is not the same as intended. Someone still has to decide what the system should do, own the trade-offs, and answer for it once it is in production. That is an engineering responsibility, and it does not go away because the typing got faster.
 
 On the enterprise systems I work on, someone has to confirm that what shipped is what was asked for, that the data model change is the one we want to live with, that the permission check is on the right action. Those are engineering decisions with consequences that outlast the sprint. An agent can propose them. It should not make them silently.
 
