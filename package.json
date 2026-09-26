@@ -1,0 +1,46 @@
+{
+  "name": "sanoy-ai-workflow",
+  "version": "0.1.0",
+  "description": "Sanoy: an agentic AI development workflow for Claude Code: plan, build, change, learn, ship. One living document per feature, a build-verifying Stop hook, a fresh-eyes reviewer, and an onboarding skill that teaches the AI your codebase first.",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "agentic",
+    "ai",
+    "workflow",
+    "skills",
+    "developer-experience",
+    "cli"
+  ],
+  "license": "MIT",
+  "author": "Yonas Yeneneh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanoylab/sanoy-ai-workflow.git"
+  },
+  "homepage": "https://github.com/sanoylab/sanoy-ai-workflow#readme",
+  "bugs": {
+    "url": "https://github.com/sanoylab/sanoy-ai-workflow/issues"
+  },
+  "type": "commonjs",
+  "bin": {
+    "sanoy-ai-workflow": "bin/cli.js",
+    "sanoy": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "template",
+    "stacks",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "node scripts/lint.js"
+  }
+}

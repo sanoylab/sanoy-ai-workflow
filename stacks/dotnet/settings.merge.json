@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet:*)",
+      "Bash(dotnet-ef:*)",
+      "PowerShell(dotnet build *)",
+      "PowerShell(dotnet test *)",
+      "PowerShell(dotnet run *)",
+      "PowerShell(dotnet watch *)",
+      "PowerShell(dotnet-ef *)"
+    ],
+    "deny": [
+      "Edit(**/Migrations/**)",
+      "Write(**/Migrations/**)",
+      "Bash(dotnet ef:*)",
+      "PowerShell(dotnet ef *)",
+      "Read(**/appsettings.Development.json)",
+      "Read(**/appsettings.Local.json)"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff:*)",
+      "Bash(mypy:*)",
+      "Bash(poetry:*)",
+      "Bash(uv:*)",
+      "PowerShell(python *)",
+      "PowerShell(pip *)",
+      "PowerShell(pytest *)",
+      "PowerShell(ruff *)",
+      "PowerShell(mypy *)",
+      "PowerShell(poetry *)",
+      "PowerShell(uv *)"
+    ]
+  }
+}

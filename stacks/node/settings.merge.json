@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm:*)",
+      "Bash(yarn:*)",
+      "Bash(node:*)",
+      "PowerShell(npm *)",
+      "PowerShell(npx *)",
+      "PowerShell(pnpm *)",
+      "PowerShell(yarn *)",
+      "PowerShell(node *)"
+    ]
+  }
+}
