@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sanoy AI Workflow</title>
-<meta name="description" content="My personal agentic engineering workflow for Claude Code, open-sourced. The AI plans, builds, and ships; the engineer decides, verifies, and understands. Installed with one command.">
+<meta name="description" content="My personal agentic engineering workflow for Claude Code, open-sourced. The AI plans, builds, and ships; the engineer stays on the decisions that matter and keeps a codebase they can fix and extend by hand. Installed with one command.">
 <meta property="og:title" content="Sanoy AI Workflow">
 <meta property="og:description" content="Agentic engineering with the engineer in the loop. A personal Claude Code workflow, shared.">
 <meta property="og:type" content="website">
@@ -210,7 +210,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
   <div>
     <span class="pill"><i></i> My personal AI workflow, open-sourced</span>
     <h1>Agentic engineering, with the engineer in the loop.</h1>
-    <p class="lead">The workflow I use with Claude Code on most of my projects. The AI plans, builds, and ships. I decide, verify, and understand, without babysitting every keystroke. And it teaches me what it built, so I can maintain the code without it.</p>
+    <p class="lead">The workflow I use with Claude Code on most of my projects. The AI plans, builds, and ships. I decide, verify, and understand, without babysitting every keystroke. And it teaches me what it built, so I can fix and extend the code without it.</p>
     <div class="actions">
       <span class="cmd"><span class="p">$</span> npx sanoy-ai-workflow init <button type="button" data-copy="npx sanoy-ai-workflow init">Copy</button></span>
       <a class="btn" href="https://github.com/sanoylab/sanoy-ai-workflow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg> GitHub</a>
@@ -251,7 +251,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
 <section id="why">
   <div class="eyebrow">Why</div>
   <h2>The opposite of vibe coding.</h2>
-  <p class="sub prose">Vibe coding is fast until the first change request. The engineer either stops understanding the system or ends up watching every diff, which is slower than writing it. This workflow keeps the speed and puts the engineer where it matters: on decisions, verification, and understanding.</p>
+  <p class="sub prose">Vibe coding is fast until the first change request. Reviewing everything is not the answer either: an agent writes more code in an afternoon than anyone reads carefully for long. This workflow keeps the speed, puts the engineer on the two decisions that matter, lets the system verify the rest, and spends the saved time on understanding the code.</p>
   <div class="vs">
     <div class="col bad">
       <h3><i>&times;</i> What vibe coding costs you</h3>
@@ -261,7 +261,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
         <li><span><b>Tests written after the fact,</b> to pass, or not at all.</span></li>
         <li><span><b>Decisions made silently.</b> Scope, data model, security behavior: chosen by the agent, noticed later.</span></li>
         <li><span><b>The spec lives in a chat scroll</b> and is gone by next week.</span></li>
-        <li><span><b>You become the babysitter.</b> Nothing else checks the work, so you read every line, or you stop reading.</span></li>
+        <li><span><b>Review as the only safety net.</b> Nobody reads every line for long, so the safety quietly decays while you still believe you have it.</span></li>
       </ul>
     </div>
     <div class="col good">
@@ -273,7 +273,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
         <li><span><b>A second agent reviews with fresh eyes</b> for correctness, architecture, data access, security, and scope.</span></li>
         <li><span><b>One living document per feature:</b> what it does now, its code map, every change and its root cause.</span></li>
         <li><span><b>An explicit stop-and-ask list</b> (migrations, shared infrastructure, security, scope creep) so you are asked when it matters and not otherwise.</span></li>
-        <li><span><b>Learning modes</b> (auto, pair, coach) and a quiz, so you understand the code without watching it being typed.</span></li>
+        <li><span><b>The codebase stays yours:</b> walkthroughs, pair and coach modes, quizzes, and a handbook, so you can fix the next bug and add the next feature without an agent.</span></li>
       </ul>
     </div>
   </div>
@@ -294,8 +294,8 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
   <div class="learn">
     <div>
       <div class="eyebrow">The part that matters most</div>
-      <h2>Ship fast, and still understand your own system.</h2>
-      <p class="sub">Planning, building, and shipping with an agent is a solved problem; many tools do it. The problem I wanted to solve is what comes after: a codebase I depend on but did not write. So this workflow makes the AI teach me what it implemented, feature by feature, while it is fresh.</p>
+      <h2>Ship fast, and still own your system.</h2>
+      <p class="sub">Planning, building, and shipping with an agent is a solved problem; many tools do it. The problem I wanted to solve is what comes after: a codebase I depend on but did not write. Review tells you whether today's diff is right. Understanding tells you whether you can handle tomorrow's bug. So this workflow makes the AI teach me what it implemented, feature by feature, while it is fresh: when something breaks in production I can trace it, and when the business wants one more field I can add it, with or without an agent.</p>
       <p class="quote">If the agents disappeared tomorrow, I should still be able to fix a bug, add a feature, and explain the system on a whiteboard.</p>
     </div>
     <div class="modes">
