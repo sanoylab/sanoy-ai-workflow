@@ -10,4 +10,4 @@ This repository uses Sanoy (sanoy-ai-workflow), an agentic AI development workfl
 
 Workflow expectations for any agent: plan before coding and get the plan approved; write tests first from acceptance criteria; keep commits small with a `Feature: <slug>` trailer; never create schema migrations without asking; run the build and tests before claiming done; never use the em dash character.
 
-The `.claude/skills/*/SKILL.md` files describe each step of the workflow in detail (feature, build, change, learn, ship, pbi, status, onboard). They are written for Claude Code but read as plain procedures.
+The `.claude/skills/*/SKILL.md` files describe each step of the workflow in detail (feature, build, change, learn, ship, status, onboard). They are written for Claude Code but read as plain procedures.

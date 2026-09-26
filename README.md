@@ -30,7 +30,6 @@ FIX OR CHANGE  /change <feature, #123, or "the export button is broken"> <what t
 
 ANY TIME       /status    where am I, what is open, what next
                /learn     explain any feature, file, or concept; quiz mode
-               /pbi       create GitHub issues or Azure DevOps items from a feature or a change
                /onboard   (re)teach the AI the project
 ```
 
@@ -68,7 +67,7 @@ AGENTS.md                      pointer for other coding agents
 .claude/workflow.conf          the project profile: build, test, branch, PR mode, work items
 .claude/settings.json          safe allow list, deny rules for destructive git and secrets, the Stop hook
 .claude/hooks/verify-build.js  the build gate
-.claude/skills/                onboard, feature, build, change, learn, ship, pbi, status
+.claude/skills/                onboard, feature, build, change, learn, ship, status
 .claude/agents/reviewer.md     read-only reviewer
 .claude/rules/                 path-scoped rules (loaded only when matching files are touched)
 _features/                     one folder per feature + INDEX.md

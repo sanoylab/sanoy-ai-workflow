@@ -33,7 +33,6 @@
       "PowerShell(git switch *)",
       "PowerShell(git push *)",
       "PowerShell(gh *)",
-      "PowerShell(.\\scripts\\azdo-create-pbi.ps1 *)",
       "PowerShell(.\\scripts\\azdo-get-workitem.ps1 *)",
       "PowerShell(Get-ChildItem *)",
       "PowerShell(Get-Content *)",

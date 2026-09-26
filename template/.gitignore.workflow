@@ -4,4 +4,3 @@
 .claude/azdo.local.json
 .claude/.last-green-build
 .claude/.build/
-.pbi-payload.json

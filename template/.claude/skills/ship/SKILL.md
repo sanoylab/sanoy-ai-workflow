@@ -29,6 +29,6 @@ disable-model-invocation: true
    - `none`: skip.
    PR body: summary, acceptance criteria or the change request, root cause for bugs, test results, `Feature doc: _features/<slug>/feature.md`, work item links, and a note that squash merge is recommended if the branch has wip commits.
 8. Record the PR link or number in feature.md (header for features, the change entry for fixes) and INDEX.md. If the developer never supplies it, leave "PR: pending".
-9. Report: commit, branch, PR link. If work items are tracked and none is linked, suggest `/pbi <slug>` or `/pbi <slug> C-00N`.
+9. Report: commit, branch, PR link.
 
 Never use --no-verify or --force. Never amend pushed commits. Never use the em dash character in commit messages or PR text.

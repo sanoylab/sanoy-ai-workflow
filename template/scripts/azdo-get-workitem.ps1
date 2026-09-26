@@ -4,7 +4,7 @@
     /change Claude Code skill when a work item number is given.
 
 .DESCRIPTION
-    Resolves the Azure DevOps configuration exactly like azdo-create-pbi.ps1
+    Resolves the Azure DevOps configuration from environment variables or a local file
     (AZDO_ORG_URL / AZDO_PROJECT / AZDO_PAT environment variables first, then
     the git-ignored .claude/azdo.local.json), fetches the work
     item and its most recent comments, strips HTML, and emits:

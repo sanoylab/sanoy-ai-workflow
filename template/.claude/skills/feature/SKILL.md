@@ -38,4 +38,4 @@ Goal: a plan short enough that the developer reads all of it, and specific enoug
 6. Add a row to `_features/INDEX.md` (Status: planned).
 7. Stop and present: goal (1 line), approach (max 5 bullets), "Decisions I made for you" (so they can overrule any by reading), assumptions, open questions. Ask with AskUserQuestion: approve, change, or cancel.
 
-After approval, suggest /clear, then `/build <slug>`, and `/pbi <slug>` if the project tracks work items.
+After approval, suggest /clear, then `/build <slug>`.

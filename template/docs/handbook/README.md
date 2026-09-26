@@ -24,8 +24,7 @@ NEW FEATURE    /feature <idea> [quick|deep]  ->  /build <slug> [auto|pair|coach]
 FIX OR CHANGE  /change <feature, #workitem, or description> <what the user asked> [auto|pair|coach]  ->  /ship
                  S: runs straight through | M: you approve a mini plan | L: becomes a /feature
 
-ANY TIME       /pbi <slug> [C-003]      create or link work items (backlog items or issues, a bug for a change entry)
-               /learn <anything> [quiz] explain, walk through, or quiz
+ANY TIME       /learn <anything> [quiz] explain, walk through, or quiz
                /status                  where am I, what is open, what next
                /onboard [new|existing]  (re)teach the AI the project
 ```

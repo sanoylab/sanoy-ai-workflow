@@ -12,7 +12,7 @@ Two lanes, one home per feature:
 
 - **New feature**: `/feature <idea> [quick|deep]` (short interview, plan for approval) then `/build <slug> [auto|pair|coach]`, `/learn <slug>`, `/ship`.
 - **Fix or change on an existing feature**: `/change <feature, #workitem, or description> <what changed>` then `/ship`. Small changes run straight through; medium ones wait for a mini plan approval; large ones become a `/feature`.
-- **Any time**: `/pbi <slug> [C-00N]` creates or links work items; `/learn <anything> [quiz]` explains or quizzes.
+- **Any time**: `/learn <anything> [quiz]` explains or quizzes; `/status` shows where you are.
 
 Project values (commands, branches, PR mode, work items) live in `.claude/workflow.conf`. Run `/feature`, `/build`, and medium or large changes on the strongest model. After approving a plan, `/clear` and run `/build`: the feature doc carries everything.
 

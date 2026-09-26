@@ -43,7 +43,6 @@ test('init installs the template, appends gitignore lines, writes a manifest', (
     assert.ok(fs.existsSync(path.join(dir, f)), `${f} missing`);
   }
   const ignore = fs.readFileSync(path.join(dir, '.gitignore'), 'utf8');
-  assert.match(ignore, /\.pbi-payload\.json/);
   assert.match(ignore, /\.claude\/\.last-green-build/);
   const manifest = kit.readManifest(dir);
   assert.equal(manifest.version, kit.VERSION);

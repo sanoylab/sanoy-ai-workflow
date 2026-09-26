@@ -41,4 +41,4 @@ Same rules as /build: stop-and-ask list, learning mode (default auto; in pair mo
 In feature.md: update What it does now and acceptance criteria to the new truth, the Code map if files were added or moved, and complete the change entry (what changed, files, tests, Learn note, status in review). Update the INDEX.md row (Last change). No em dash characters.
 
 ## 8. Report
-Reply with: root cause (bugs) or what changed, tests run and results, a diff reading order, anything left open. Suggest /ship, and `/pbi <slug> C-00N` if the project tracks work items and none is linked.
+Reply with: root cause (bugs) or what changed, tests run and results, a diff reading order, anything left open. Suggest /ship.
