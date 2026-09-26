@@ -9,30 +9,37 @@
 <meta property="og:description" content="Build with AI. Keep the craft. An agentic development workflow for Claude Code, installed with one command.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sanoylab.github.io/sanoy-ai-workflow/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E6B5E'/%3E%3Cpath d='M18 40c6 6 22 6 28 0M20 24l12 10 12-10' fill='none' stroke='%23F6F7F4' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E6B5E'/%3E%3Cpath d='M18 40c6 6 22 6 28 0M20 24l12 10 12-10' fill='none' stroke='%23F6F7F4' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root {
   color-scheme: light;
-  --bg: #F6F7F4;
-  --bg-2: #ECEFEA;
-  --ink: #15201B;
-  --ink-2: #3E4A45;
-  --muted: #5E6B66;
-  --line: #D6DCD7;
+  --bg: #F8F9F7;
+  --bg-2: #FFFFFF;
+  --bg-3: #EEF2EF;
+  --ink: #131B17;
+  --ink-2: #3F4B46;
+  --muted: #6B7873;
+  --line: #E1E6E2;
+  --line-2: #CDD5D0;
   --accent: #0E6B5E;
-  --accent-ink: #F6F7F4;
-  --accent-soft: #DCEBE6;
+  --accent-2: #12857A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E0F0EC;
   --gate: #B8741A;
-  --gate-soft: #F4E5CC;
-  --term-bg: #15201B;
+  --gate-soft: #FBEFD9;
+  --term-bg: #10181500;
+  --term: #101815;
   --term-fg: #E6EDE9;
-  --term-dim: #8FA39B;
+  --term-dim: #7F938B;
   --term-accent: #7ED8C6;
-  --shadow: 0 1px 2px rgba(21,32,27,.06), 0 12px 32px -16px rgba(21,32,27,.25);
-  --radius: 10px;
+  --term-y: #F0C27A;
+  --glow: rgba(14,107,94,.14);
+  --shadow: 0 1px 2px rgba(19,27,23,.05), 0 24px 48px -24px rgba(19,27,23,.25);
+  --shadow-sm: 0 1px 2px rgba(19,27,23,.05), 0 8px 20px -12px rgba(19,27,23,.18);
+  --r: 14px;
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", Consolas, "SFMono-Regular", Menlo, monospace;
@@ -40,283 +47,353 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #0E1412;
-    --bg-2: #151D1A;
-    --ink: #E8EEEA;
-    --ink-2: #C3CDC8;
-    --muted: #93A19B;
-    --line: #26332E;
-    --accent: #5CC2B0;
-    --accent-ink: #0E1412;
-    --accent-soft: #143530;
-    --gate: #E0A34D;
-    --gate-soft: #3A2A12;
-    --term-bg: #0A0F0D;
-    --term-fg: #E6EDE9;
-    --term-dim: #7E9189;
-    --term-accent: #7ED8C6;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.6);
+    --bg: #0C1210; --bg-2: #121A17; --bg-3: #18221E; --ink: #E9EFEB; --ink-2: #C2CCC7; --muted: #8E9C96;
+    --line: #223029; --line-2: #2F4038; --accent: #5CC7B4; --accent-2: #7ED8C6; --accent-ink: #0C1210; --accent-soft: #143530;
+    --gate: #E4A955; --gate-soft: #3A2A12; --term: #080D0B; --glow: rgba(92,199,180,.16);
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 24px 48px -24px rgba(0,0,0,.7);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0E1412; --bg-2: #151D1A; --ink: #E8EEEA; --ink-2: #C3CDC8; --muted: #93A19B; --line: #26332E;
-  --accent: #5CC2B0; --accent-ink: #0E1412; --accent-soft: #143530; --gate: #E0A34D; --gate-soft: #3A2A12;
-  --term-bg: #0A0F0D; --term-fg: #E6EDE9; --term-dim: #7E9189; --term-accent: #7ED8C6;
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.6);
+  --bg: #0C1210; --bg-2: #121A17; --bg-3: #18221E; --ink: #E9EFEB; --ink-2: #C2CCC7; --muted: #8E9C96;
+  --line: #223029; --line-2: #2F4038; --accent: #5CC7B4; --accent-2: #7ED8C6; --accent-ink: #0C1210; --accent-soft: #143530;
+  --gate: #E4A955; --gate-soft: #3A2A12; --term: #080D0B; --glow: rgba(92,199,180,.16);
+  --shadow: 0 1px 2px rgba(0,0,0,.5), 0 24px 48px -24px rgba(0,0,0,.7);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5), 0 8px 20px -12px rgba(0,0,0,.6);
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 html, body { margin: 0; }
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--body);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
   padding-inline: 20px;
-  padding-block: 0 64px;
+  padding-block: 0 72px;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+body::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 720px; pointer-events: none; z-index: -1;
+  background:
+    radial-gradient(60% 50% at 70% 10%, var(--glow), transparent 70%),
+    radial-gradient(40% 40% at 10% 30%, var(--glow), transparent 70%);
 }
 a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.wrap { max-width: 1040px; margin-inline: auto; }
-.prose { max-width: 68ch; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.12; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2.3rem, 6vw, 4rem); letter-spacing: -0.01em; }
-h2 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 14px; }
-h3 { font-size: 1.15rem; font-family: var(--body); font-weight: 600; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1080px; margin-inline: auto; }
+.prose { max-width: 62ch; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.08; text-wrap: balance; margin: 0; letter-spacing: -0.012em; }
+h1 { font-size: clamp(2.6rem, 6.6vw, 4.6rem); }
+h2 { font-size: clamp(1.8rem, 3.8vw, 2.6rem); margin-bottom: 16px; }
+h3 { font-family: var(--body); font-weight: 600; font-size: 1.08rem; letter-spacing: 0; }
 p { margin: 0 0 14px; }
-code, pre, kbd { font-family: var(--mono); font-size: .92em; }
-code { background: var(--bg-2); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
-.eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-section { padding-block: 56px; border-top: 1px solid var(--line); }
-section:first-of-type { border-top: 0; }
+p.sub { color: var(--ink-2); font-size: 1.08rem; }
+code, pre, kbd { font-family: var(--mono); font-size: .9em; }
+code { background: var(--bg-3); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; }
+.eyebrow { font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+section { padding-block: 72px; }
+section + section { border-top: 1px solid var(--line); }
+.center { text-align: center; }
+.center .prose { margin-inline: auto; }
 
 /* header */
-header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 1.2rem; color: var(--ink); }
-.brand svg { width: 28px; height: 28px; }
-nav.links { display: flex; gap: 20px; flex-wrap: wrap; font-size: .95rem; }
-nav.links a { color: var(--ink-2); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  margin-inline: -20px; padding-inline: 20px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: saturate(140%) blur(12px); -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.top .in { max-width: 1080px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 1.25rem; color: var(--ink); }
+.brand svg { width: 30px; height: 30px; }
+.brand:hover { text-decoration: none; }
+nav.links { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: .93rem; }
+nav.links a { color: var(--ink-2); padding: 6px 10px; border-radius: 8px; }
+nav.links a:hover { background: var(--bg-3); text-decoration: none; color: var(--ink); }
+.theme { border: 1px solid var(--line); background: var(--bg-2); color: var(--ink-2); border-radius: 8px; width: 34px; height: 34px; display: inline-grid; place-items: center; cursor: pointer; }
+.theme:hover { border-color: var(--line-2); color: var(--ink); }
+.theme svg { width: 17px; height: 17px; }
+@media (max-width: 720px) { nav.links a.hide { display: none; } }
 
 /* hero */
-.hero { padding-block: 40px 56px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
-.hero .lead { font-size: 1.2rem; color: var(--ink-2); max-width: 34ch; margin-top: 18px; }
-.hero .tag { display: inline-block; font-size: .8rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 4px 12px; margin-bottom: 18px; }
-.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; padding: 10px 16px; font-weight: 600; font-size: .95rem; border: 1px solid var(--line); color: var(--ink); background: var(--bg-2); }
+.hero { padding-block: 72px 64px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.hero .lead { font-size: 1.22rem; color: var(--ink-2); max-width: 36ch; margin-top: 22px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 5px 12px 5px 8px; margin-bottom: 22px; }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; padding: 12px 18px; font-weight: 600; font-size: .96rem; border: 1px solid var(--line-2); color: var(--ink); background: var(--bg-2); }
 .btn:hover { text-decoration: none; border-color: var(--muted); }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.btn.primary:hover { filter: brightness(1.07); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: 0 10px 24px -14px var(--accent); }
+.btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.btn svg { width: 16px; height: 16px; }
+.cmd { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: .92rem; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 10px 14px; color: var(--ink); }
+.cmd .p { color: var(--muted); }
+.cmd button { border: 0; background: var(--bg-3); color: var(--ink-2); border-radius: 6px; padding: 5px 9px; font: 500 .75rem var(--body); cursor: pointer; }
+.cmd button:hover { background: var(--line); color: var(--ink); }
 
-.term { background: var(--term-bg); color: var(--term-fg); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; font-family: var(--mono); font-size: .9rem; line-height: 1.7; }
-.term .bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); color: var(--term-dim); font-size: .78rem; }
-.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); display: inline-block; }
-.term pre { margin: 0; padding: 16px 18px; overflow-x: auto; white-space: pre; }
+/* rail (hero visual) */
+.rail { background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: 22px 22px 18px; position: relative; overflow: hidden; }
+.rail .cap { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); margin-bottom: 18px; }
+.rail .cap b { font-weight: 600; color: var(--ink-2); font-family: var(--mono); font-size: .8rem; }
+.track { position: relative; display: grid; gap: 10px; }
+.track::before { content: ""; position: absolute; left: 17px; top: 18px; bottom: 18px; width: 2px; background: var(--line-2); border-radius: 2px; }
+.track::after { content: ""; position: absolute; left: 17px; top: 18px; width: 2px; height: 34%; border-radius: 2px; background: linear-gradient(var(--accent), transparent); opacity: .9; }
+.node { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; position: relative; padding: 6px 8px 6px 0; border-radius: 10px; }
+.node .dot { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-2); border: 2px solid var(--line-2); color: var(--muted); position: relative; z-index: 1; }
+.node .dot svg { width: 16px; height: 16px; }
+.node.on .dot { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+.node.gate .dot { border-color: var(--gate); color: var(--gate); background: var(--gate-soft); }
+.node .t { font-family: var(--mono); font-size: .92rem; font-weight: 500; color: var(--ink); }
+.node .t span { font-family: var(--body); font-weight: 600; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gate); margin-left: 8px; }
+.node .d { font-size: .86rem; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+.node .st { justify-self: end; align-self: center; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 999px; grid-column: 2; grid-row: 1; margin-left: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .track::after { animation: travel 6s ease-in-out infinite; }
+  @keyframes travel { 0% { top: 18px; height: 0; opacity: 0 } 10% { opacity: .9 } 70% { top: 18px; height: 100%; opacity: .9 } 100% { top: 100%; height: 0; opacity: 0 } }
+  .node.on .dot { animation: ping 6s ease-in-out infinite; }
+  .node.on:nth-of-type(1) .dot { animation-delay: .6s } .node.on:nth-of-type(3) .dot { animation-delay: 2.4s } .node.on:nth-of-type(4) .dot { animation-delay: 3.3s } .node.on:nth-of-type(5) .dot { animation-delay: 4.2s }
+  @keyframes ping { 0%, 100% { box-shadow: 0 0 0 5px var(--accent-soft) } 12% { box-shadow: 0 0 0 9px var(--accent-soft) } 24% { box-shadow: 0 0 0 5px var(--accent-soft) } }
+}
+
+/* bento */
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; box-shadow: var(--shadow-sm); position: relative; transition: transform .2s, border-color .2s; }
+.card:hover { transform: translateY(-2px); border-color: var(--line-2); }
+.card .ic { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+.card .ic svg { width: 20px; height: 20px; }
+.card h3 { margin-bottom: 8px; }
+.card p { color: var(--ink-2); font-size: .97rem; margin: 0; }
+.card .k { display: block; font-family: var(--mono); font-size: .78rem; color: var(--muted); margin-top: 14px; }
+.c6 { grid-column: span 6; } .c4 { grid-column: span 4; }
+@media (max-width: 900px) { .c6, .c4 { grid-column: span 6; } }
+@media (max-width: 600px) { .c6, .c4 { grid-column: span 12; } }
+
+/* document mock */
+.split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.doc { background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 22px 26px; font-size: .9rem; line-height: 1.6; }
+.doc .path { font-family: var(--mono); font-size: .78rem; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 10px; }
+.doc .path b { color: var(--accent); font-weight: 500; }
+.doc h4 { font-family: var(--display); font-size: 1.25rem; margin: 0 0 6px; font-weight: 600; }
+.doc .meta { font-size: .8rem; color: var(--muted); margin-bottom: 14px; }
+.doc .meta b { color: var(--ink-2); font-weight: 500; }
+.doc h5 { font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; font-weight: 600; }
+.doc ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.doc li { margin: 2px 0; }
+.doc .chg { border-left: 3px solid var(--gate); padding: 6px 12px; background: var(--gate-soft); border-radius: 0 8px 8px 0; color: var(--ink-2); margin-top: 6px; }
+.doc .chg b { color: var(--ink); font-weight: 600; }
+.doc code { font-size: .8rem; }
+
+/* commands */
+.cmds { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: 300px 1fr auto; gap: 18px; align-items: center; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.row code { background: transparent; border: 0; padding: 0; color: var(--accent); font-weight: 500; font-size: .95rem; white-space: nowrap; }
+.row p { margin: 0; color: var(--ink-2); font-size: .97rem; }
+.row .ask { font-size: .78rem; color: var(--muted); white-space: nowrap; background: var(--bg-3); border-radius: 999px; padding: 4px 10px; }
+@media (max-width: 820px) { .row { grid-template-columns: 1fr; gap: 8px; } .row code { white-space: normal; } .row .ask { justify-self: start; } }
+
+/* terminal */
+.term { background: var(--term); color: var(--term-fg); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; font-family: var(--mono); font-size: .9rem; line-height: 1.75; position: relative; }
+.term .bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); color: var(--term-dim); font-size: .78rem; }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.16); display: inline-block; }
+.term pre { margin: 0; padding: 18px 20px; overflow-x: auto; white-space: pre; }
 .term .p { color: var(--term-dim); user-select: none; }
 .term .c { color: var(--term-accent); }
 .term .m { color: var(--term-dim); }
-.term .y { color: #F0C27A; }
-.copyrow { position: relative; }
-.copy { position: absolute; top: 8px; right: 10px; background: rgba(255,255,255,.08); color: var(--term-fg); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 4px 10px; font: 500 .75rem var(--body); cursor: pointer; }
-.copy:hover { background: rgba(255,255,255,.14); }
-
-/* lanes */
-.lanes { display: grid; gap: 18px; }
-.lane { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); padding: 18px 20px; }
-.lane .name { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.flow { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
-.step { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 150px; flex: 1 1 150px; }
-.step code { background: transparent; border: 0; padding: 0; font-weight: 500; color: var(--accent); font-size: .95rem; }
-.step small { display: block; color: var(--muted); font-size: .82rem; line-height: 1.4; margin-top: 4px; }
-.step.gate { border-color: var(--gate); background: var(--gate-soft); }
-.step.gate .who { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--gate); margin-bottom: 2px; }
-.arrow { align-self: center; color: var(--muted); font-size: 1.1rem; }
-.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: .88rem; color: var(--muted); margin-top: 6px; }
-.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--line); background: var(--bg); }
-.legend i.g { border-color: var(--gate); background: var(--gate-soft); }
-
-/* features */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px 28px; }
-.feat h3 { margin-bottom: 6px; }
-.feat p { color: var(--ink-2); font-size: .98rem; margin: 0; }
-.feat .k { font-family: var(--mono); font-size: .8rem; color: var(--accent); display: block; margin-bottom: 8px; }
-
-/* table */
-.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
-table { border-collapse: collapse; width: 100%; font-size: .95rem; min-width: 620px; }
-th, td { text-align: left; padding: 11px 14px; border-top: 1px solid var(--line); vertical-align: top; }
-th { background: var(--bg-2); border-top: 0; font-weight: 600; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-td code { white-space: nowrap; }
-
-/* sequence */
-.seq { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; counter-reset: s; }
-.seq li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
-.seq li::before { counter-increment: s; content: counter(s); font-family: var(--display); font-weight: 600; font-size: 1.4rem; color: var(--accent); line-height: 1.2; }
-.seq li p { margin: 0; color: var(--ink-2); }
-.seq li strong { color: var(--ink); }
-
-/* two-col */
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
-.file { font-family: var(--mono); font-size: .85rem; line-height: 1.75; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; overflow-x: auto; white-space: pre; margin: 0; }
-.file b { color: var(--accent); font-weight: 500; }
-.file i { color: var(--muted); font-style: normal; }
+.term .y { color: var(--term-y); }
+.copy { position: absolute; top: 9px; right: 12px; background: rgba(255,255,255,.08); color: var(--term-fg); border: 1px solid rgba(255,255,255,.12); border-radius: 7px; padding: 5px 11px; font: 500 .76rem var(--body); cursor: pointer; }
+.copy:hover { background: rgba(255,255,255,.15); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+.steps li::before { counter-increment: s; content: counter(s); width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; font: 600 .85rem var(--mono); color: var(--accent); background: var(--bg-2); }
+.steps p { margin: 0; color: var(--ink-2); }
+.steps strong { color: var(--ink); }
 
 /* faq */
-details { border-top: 1px solid var(--line); padding: 12px 0; }
+details { border-top: 1px solid var(--line); padding: 14px 0; }
 details:last-of-type { border-bottom: 1px solid var(--line); }
-summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; color: var(--muted); font-family: var(--mono); }
+summary::after { content: "+"; color: var(--muted); font-family: var(--mono); font-size: 1.1rem; }
 details[open] summary::after { content: "\2013"; }
 details p { color: var(--ink-2); margin: 10px 0 0; max-width: 68ch; }
 
-footer { border-top: 1px solid var(--line); padding-top: 26px; color: var(--muted); font-size: .9rem; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-@media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; gap: 28px; }
-  section { padding-block: 40px; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .btn, .copy { transition: filter .15s, border-color .15s, background .15s; }
+/* cta + footer */
+.cta { background: var(--term); color: var(--term-fg); border-radius: 20px; padding: 48px 28px; text-align: center; }
+.cta h2 { color: #fff; }
+.cta p { color: var(--term-dim); max-width: 50ch; margin-inline: auto; }
+.cta .btn.primary { margin-top: 10px; }
+footer { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 72px; color: var(--muted); font-size: .9rem; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 800px) {
+  .hero, .split { grid-template-columns: 1fr; gap: 32px; }
+  section { padding-block: 52px; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
 <header class="top">
-  <a class="brand" href="#top" aria-label="Sanoy AI Workflow">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M18 40c6 6 22 6 28 0M20 24l12 10 12-10" fill="none" stroke="var(--accent-ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Sanoy
-  </a>
-  <nav class="links" aria-label="Site">
-    <a href="#how">How it works</a>
-    <a href="#commands">Commands</a>
-    <a href="#install">Install</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://github.com/sanoylab/sanoy-ai-workflow">GitHub</a>
-    <a href="https://www.npmjs.com/package/sanoy-ai-workflow">npm</a>
-  </nav>
+  <div class="in">
+    <a class="brand" href="#top" aria-label="Sanoy AI Workflow">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="var(--accent)"/><path d="M18 40c6 6 22 6 28 0M20 24l12 10 12-10" fill="none" stroke="var(--accent-ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Sanoy
+    </a>
+    <nav class="links" aria-label="Site">
+      <a class="hide" href="#how">How it works</a>
+      <a class="hide" href="#features">Features</a>
+      <a class="hide" href="#commands">Commands</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/sanoylab/sanoy-ai-workflow">GitHub</a>
+      <button class="theme" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
 </header>
+
+<div class="wrap">
 
 <section class="hero" id="top">
   <div>
-    <span class="tag">Open source, MIT, for Claude Code</span>
+    <span class="pill"><i></i> Open source, MIT, built for Claude Code</span>
     <h1>Build with AI.<br>Keep the craft.</h1>
     <p class="lead">An agentic development workflow that plans before it codes, proves the build before it stops, and teaches you the code it writes.</p>
     <div class="actions">
-      <a class="btn primary" href="#install">Install in one command</a>
-      <a class="btn" href="https://github.com/sanoylab/sanoy-ai-workflow">View on GitHub</a>
+      <span class="cmd"><span class="p">$</span> npx sanoy-ai-workflow init <button type="button" data-copy="npx sanoy-ai-workflow init">Copy</button></span>
+      <a class="btn" href="https://github.com/sanoylab/sanoy-ai-workflow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg> GitHub</a>
     </div>
   </div>
-  <div class="term copyrow" aria-label="Install commands">
-    <div class="bar"><i></i><i></i><i></i> terminal</div>
-    <button class="copy" type="button" data-copy="npx sanoy-ai-workflow init">Copy</button>
-<pre><span class="p">$ </span><span class="c">npx sanoy-ai-workflow init</span>
-<span class="m">Installed 29 file(s) into ./my-app</span>
-<span class="m">Next: open the project in Claude Code and run</span> <span class="y">/onboard</span>
 
-<span class="p">$ </span><span class="c">claude</span>
-<span class="p">&gt; </span><span class="y">/onboard</span>
-<span class="m">Explored 412 files. Proposed build and test commands,</span>
-<span class="m">filled CLAUDE.md, mapped 14 existing features.</span>
-<span class="p">&gt; </span><span class="y">/feature</span> add CSV export to the incidents list
-<span class="p">&gt; </span><span class="y">/build</span> incidents-csv-export
-<span class="p">&gt; </span><span class="y">/ship</span></pre>
-  </div>
-</section>
-
-<section id="why">
-  <div class="prose">
-    <div class="eyebrow">The problem</div>
-    <h2>Vibe coding is fast until you have to change it.</h2>
-    <p>An agent that writes code nobody understands leaves you with a project you cannot change safely. Sanoy keeps the speed and removes the blindness: every feature gets a plan you approve, tests written first, a build that must pass before the agent finishes its turn, a second agent that reviews with fresh eyes, and a living document that records what the feature does now, where its code lives, and every change since.</p>
-    <p>It came out of a real production codebase (a modular .NET platform with six modules and forty-seven features) and was generalized so it works with any language or framework.</p>
-  </div>
-</section>
-
-<section id="how">
-  <div class="eyebrow">How it works</div>
-  <h2>Two lanes. One home per feature.</h2>
-  <p class="prose" style="color: var(--ink-2)">Amber boxes are the moments you stay in control. Everything between them runs on its own, with an explicit list of things that make the agent stop and ask (an unplanned migration, shared infrastructure, security behavior, scope growing).</p>
-  <div class="lanes">
-    <div class="lane">
-      <div class="name">New feature</div>
-      <div class="flow">
-        <div class="step"><code>/feature</code><small>Explores the code first, asks at most a few questions, writes a lean plan.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step gate"><span class="who">You</span><br><small>Approve the plan. Overrule any "decision I made for you" by reading the list.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step"><code>/build</code><small>Tests first, then layer by layer with checkpoint commits, build gate, reviewer, walkthrough.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step"><code>/learn</code><small>Walkthrough of the result, or a quiz if you want to own it.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step gate"><span class="who">You</span><br><small>Approve the result, then <code>/ship</code> commits, pushes, and opens the PR.</small></div>
+  <div class="rail" aria-label="The life of one feature">
+    <div class="cap"><span>The life of one feature</span><b>_features/incidents-csv-export/feature.md</b></div>
+    <div class="track">
+      <div class="node on">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <div><div class="t">/feature</div><div class="d">Explores the code, asks 3 questions, writes a lean plan.</div></div>
       </div>
-    </div>
-    <div class="lane">
-      <div class="name">Fix or change an existing feature</div>
-      <div class="flow">
-        <div class="step"><code>/change</code><small>Finds the feature by any name, number, or description. Reproduces bugs with a failing test before fixing.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step gate"><span class="who">You, only for medium changes</span><br><small>Small ones run straight through. Large ones become a new feature.</small></div>
-        <div class="arrow" aria-hidden="true">&rarr;</div>
-        <div class="step"><code>/ship</code><small>Change entry recorded in the feature doc with root cause, files, tests, and a two-line lesson.</small></div>
+      <div class="node gate">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><div class="t">Plan approved<span>you</span></div><div class="d">Two decisions overruled by reading the list. No code yet.</div></div>
+      </div>
+      <div class="node on">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div><div class="t">/build</div><div class="d">Tests first, four layers, build gate green, reviewer: ready.</div></div>
+      </div>
+      <div class="node on">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/></svg></div>
+        <div><div class="t">/learn</div><div class="d">Walkthrough with path:line at each hop. Quiz: 4 of 5.</div></div>
+      </div>
+      <div class="node on">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></div>
+        <div><div class="t">/ship</div><div class="d">One confirmation, commit with trailers, PR opened.</div><span class="st">live</span></div>
+      </div>
+      <div class="node gate">
+        <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9M21 3v6h-6"/></svg></div>
+        <div><div class="t">/change<span>3 weeks later</span></div><div class="d">"Export drops the last row." Failing test, root cause, fix, entry C-001 with a two-line lesson.</div></div>
       </div>
     </div>
   </div>
-  <div class="legend"><span><i></i>Runs on its own</span><span><i class="g"></i>You decide</span></div>
+</section>
+
+<section id="how" class="center">
+  <div class="eyebrow">Why</div>
+  <h2>Vibe coding is fast until you have to change it.</h2>
+  <p class="sub prose">An agent that writes code nobody understands leaves you a project you cannot change safely. Sanoy keeps the speed and removes the blindness: a plan you approve, tests written first, a build that must pass before the agent finishes its turn, a second agent reviewing with fresh eyes, and a living document for every feature.</p>
 </section>
 
 <section id="features">
   <div class="eyebrow">What you get</div>
   <h2>Guardrails that do not slow you down.</h2>
-  <div class="grid">
-    <div class="feat"><span class="k">_features/&lt;slug&gt;/feature.md</span><h3>One living document per feature</h3><p>What it does now, the code map, design decisions, a walkthrough, and every change with its root cause. Claude resolves "the export button", <code>#1342</code>, or a slug to the right doc.</p></div>
-    <div class="feat"><span class="k">/onboard</span><h3>Reads before it asks</h3><p>Parallel explorers learn an existing codebase, propose the build and test commands, fill CLAUDE.md, write a map and glossary, and adopt your existing features. A blank project gets a short interview and a plan.</p></div>
-    <div class="feat"><span class="k">verify-build.js</span><h3>A build gate the agent cannot skip</h3><p>A Stop hook fingerprints your source changes and rebuilds before Claude ends its turn. On errors it blocks and feeds them back. Node based, so it behaves the same on Windows, macOS, and Linux.</p></div>
-    <div class="feat"><span class="k">reviewer</span><h3>Fresh-eyes review</h3><p>A read-only subagent checks correctness, architecture rules, data access, security, tests, and scope before anything ships, and reports only what it can point to in the code.</p></div>
-    <div class="feat"><span class="k">auto | pair | coach</span><h3>Learn while you ship</h3><p>Let the agent write everything, leave the core pieces for you with tests already in place, or take one step at a time with review. Quiz yourself on any feature.</p></div>
-    <div class="feat"><span class="k">Feature: &lt;slug&gt;</span><h3>Git and your tracker remember</h3><p>Every commit carries a feature trailer and, when known, a work item link. <code>/pbi</code> creates GitHub issues or Azure DevOps items from a feature or a change entry.</p></div>
+  <div class="bento" style="margin-top: 28px">
+    <div class="card c6">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-7h6v7"/></svg></div>
+      <h3>One living document per feature</h3>
+      <p>What it does now, the code map, design decisions, a walkthrough, and every change with its root cause. Say "the export button", <code>#1342</code>, or a slug and Claude finds the right doc.</p>
+      <span class="k">_features/&lt;slug&gt;/feature.md</span>
+    </div>
+    <div class="card c6">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <h3>Reads before it asks</h3>
+      <p>Onboarding explores an existing codebase with parallel agents, proposes the build and test commands, fills CLAUDE.md, writes a map and glossary, and adopts your existing features. A blank project gets a short interview and a plan.</p>
+      <span class="k">/onboard</span>
+    </div>
+    <div class="card c4">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <h3>A build gate the agent cannot skip</h3>
+      <p>A Stop hook rebuilds before Claude ends its turn and blocks on errors. Node based, identical on Windows, macOS, and Linux.</p>
+      <span class="k">verify-build.js</span>
+    </div>
+    <div class="card c4">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <h3>Fresh-eyes review</h3>
+      <p>A read-only subagent checks correctness, architecture, data access, security, tests, and scope, and reports only what it can point to.</p>
+      <span class="k">.claude/agents/reviewer.md</span>
+    </div>
+    <div class="card c4">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <h3>Learn while you ship</h3>
+      <p>Three modes: the agent writes it all, leaves the core pieces for you with tests in place, or coaches one step at a time. Quiz any feature.</p>
+      <span class="k">auto | pair | coach</span>
+    </div>
+  </div>
+</section>
+
+<section id="doc">
+  <div class="split">
+    <div>
+      <div class="eyebrow">The living document</div>
+      <h2>The truth about a feature lives next to the feature.</h2>
+      <p class="sub">Not in a chat transcript. Every build and every change updates the same file, so a month later you (or the agent) can pick it up in one read. Git carries a <code>Feature: &lt;slug&gt;</code> trailer on every commit, and your tracker gets linked through <code>/pbi</code>.</p>
+    </div>
+    <div class="doc" aria-label="Example feature document">
+      <div class="path"><span>_features/incidents-csv-export/<b>feature.md</b></span><span>C-001 shipped</span></div>
+      <h4>Incidents CSV export</h4>
+      <div class="meta">Module: <b>AUID</b> · Status: <b>live</b> · Work items: <b>#1342</b> · Also called: <b>export button, download CSV</b></div>
+      <h5>What it does now</h5>
+      <ul><li>Exports the current search result set, filters and sort applied, as UTF-8 CSV.</li><li>Capped at 50,000 rows; larger sets get a background job and an email.</li></ul>
+      <h5>Code map</h5>
+      <ul><li><code>Areas/AUID/Controllers/IncidentsController.cs</code>: Export action</li><li><code>Application/Incidents/Queries/ExportIncidentsQuery.cs</code>: query and handler</li><li><code>tests/.../ExportIncidentsTests.cs</code>: 7 tests</li></ul>
+      <h5>Changes</h5>
+      <div class="chg"><b>C-001</b> · bug · S · shipped<br>Last row dropped when the page size divided the total evenly. Root cause: off-by-one in the paging loop. Regression test added. Learn: paging loops need a "has more" flag, not a count check.</div>
+    </div>
   </div>
 </section>
 
 <section id="commands">
   <div class="eyebrow">Commands</div>
-  <h2>Eight skills, one profile file.</h2>
-  <div class="tbl">
-    <table>
-      <thead><tr><th>Skill</th><th>What it does</th><th>Asks you</th></tr></thead>
-      <tbody>
-        <tr><td><code>/onboard [new|existing]</code></td><td>Teaches the AI the project once. Safe to re-run.</td><td>One round, only what the code cannot answer</td></tr>
-        <tr><td><code>/feature &lt;idea&gt; [quick|deep]</code></td><td>Branch, explore, interview, lean plan, index row. No code.</td><td>Up to 2 rounds (0 to 2 in quick)</td></tr>
-        <tr><td><code>/build &lt;slug&gt; [auto|pair|coach]</code></td><td>Tests first, layers, checkpoint commits, build gate, reviewer, walkthrough.</td><td>Only on the stop-and-ask list</td></tr>
-        <tr><td><code>/change &lt;feature&gt; &lt;request&gt;</code></td><td>Resolve, classify, size, reproduce, fix, record the change entry.</td><td>At most 2 for small, one round for medium</td></tr>
-        <tr><td><code>/learn &lt;feature|path|topic&gt; [quiz]</code></td><td>Explain with a traced request, or quiz and grade honestly.</td><td>Five questions in quiz mode</td></tr>
-        <tr><td><code>/ship</code></td><td>Build, tests, secrets check, commit with trailers, push, PR.</td><td>One confirmation</td></tr>
-        <tr><td><code>/pbi &lt;slug&gt; [C-00N]</code></td><td>Work items from a feature or a change entry; records the IDs back.</td><td>One confirmation</td></tr>
-        <tr><td><code>/status</code></td><td>Where you are, what is open, what to run next.</td><td>Nothing</td></tr>
-      </tbody>
-    </table>
+  <h2>Eight skills. One profile file.</h2>
+  <p class="sub prose">Amber marks where you decide; everything else runs on its own with an explicit stop-and-ask list (unplanned migrations, shared infrastructure, security behavior, scope growing).</p>
+  <div class="cmds" style="margin-top: 22px">
+    <div class="row"><code>/onboard [new|existing]</code><p>Teaches the AI the project once: profile, CLAUDE.md, handbook map, adopted features. Safe to re-run.</p><span class="ask">1 round</span></div>
+    <div class="row"><code>/feature &lt;idea&gt; [quick|deep]</code><p>Branch, explore, short interview, lean plan with "decisions I made for you". No code.</p><span class="ask">you approve</span></div>
+    <div class="row"><code>/build &lt;slug&gt; [auto|pair|coach]</code><p>Tests first, then layer by layer with checkpoint commits, build gate, reviewer, walkthrough.</p><span class="ask">stop list only</span></div>
+    <div class="row"><code>/change &lt;feature&gt; &lt;request&gt;</code><p>Finds the feature by any name or number, reproduces bugs first, records the change entry.</p><span class="ask">S runs, M asks</span></div>
+    <div class="row"><code>/learn &lt;feature|path|topic&gt; [quiz]</code><p>Explains with a traced request, or quizzes five questions and grades honestly.</p><span class="ask">nothing</span></div>
+    <div class="row"><code>/ship</code><p>Build, tests, secrets check, commit with trailers, push, pull request.</p><span class="ask">you approve</span></div>
+    <div class="row"><code>/pbi &lt;slug&gt; [C-00N]</code><p>GitHub issues or Azure DevOps items from a feature or a change; records the IDs back.</p><span class="ask">1 confirmation</span></div>
+    <div class="row"><code>/status</code><p>Where you are, what is open, what to run next.</p><span class="ask">nothing</span></div>
   </div>
-  <p style="margin-top:14px; color: var(--ink-2)" class="prose">Every project-specific value lives in <code>.claude/workflow.conf</code>: build and test commands, default branch, pull-request mode (<code>gh</code>, <code>glab</code>, Azure DevOps link, plain URL), and the work item tracker. Skills read it when invoked; the hook reads it when the agent stops.</p>
 </section>
 
 <section id="install">
-  <div class="cols">
+  <div class="split">
     <div>
       <div class="eyebrow">Install</div>
       <h2>Two minutes to the first feature.</h2>
-      <ol class="seq">
+      <ol class="steps" style="margin-top: 22px">
         <li><p><strong>Install into any project</strong>, new or existing. Existing files are never overwritten. Add <code>--stack dotnet</code>, <code>node</code>, or <code>python</code> for stack-specific skills and permissions.</p></li>
-        <li><p><strong>Run <code>/onboard</code> in Claude Code.</strong> It learns the codebase, fills the profile and CLAUDE.md, writes the handbook map, and adopts existing features.</p></li>
-        <li><p><strong>Check the setup from outside</strong> with <code>doctor</code>. Later, <code>update</code> refreshes the skills without touching your config.</p></li>
+        <li><p><strong>Run <code>/onboard</code> in Claude Code.</strong> It learns the codebase, fills the profile and CLAUDE.md, writes the map, and adopts existing features.</p></li>
+        <li><p><strong>Check the setup</strong> with <code>doctor</code>. Later, <code>update</code> refreshes the skills without touching your config.</p></li>
         <li><p><strong>Start.</strong> <code>/feature</code> for something new, <code>/change</code> for existing code, <code>/status</code> when you come back tomorrow.</p></li>
       </ol>
-      <p style="margin-top:18px; color: var(--muted); font-size:.92rem">Requirements: Node 18 or newer, git, Claude Code 2.1 or newer. <code>gh</code> for GitHub pull requests and issues.</p>
+      <p style="margin-top:20px; color: var(--muted); font-size:.9rem">Node 18 or newer, git, Claude Code 2.1 or newer. <code>gh</code> for GitHub pull requests and issues. No telemetry.</p>
     </div>
-    <div class="term copyrow">
+    <div class="term">
       <div class="bar"><i></i><i></i><i></i> terminal</div>
       <button class="copy" type="button" data-copy="npx sanoy-ai-workflow init
 npx sanoy-ai-workflow init --stack dotnet
@@ -328,6 +405,9 @@ npx sanoy-ai-workflow update">Copy</button>
 <span class="m"># with a stack pack: dotnet, node, python</span>
 <span class="p">$ </span><span class="c">npx sanoy-ai-workflow init --stack dotnet</span>
 
+<span class="m"># then, inside Claude Code</span>
+<span class="p">&gt; </span><span class="y">/onboard</span>
+
 <span class="m"># later</span>
 <span class="p">$ </span><span class="c">npx sanoy-ai-workflow doctor</span>
 <span class="p">$ </span><span class="c">npx sanoy-ai-workflow update</span></pre>
@@ -335,36 +415,26 @@ npx sanoy-ai-workflow update">Copy</button>
   </div>
 </section>
 
-<section id="files">
-  <div class="cols">
-    <div>
-      <div class="eyebrow">What lands in your repo</div>
-      <h2>Plain files. No lock-in.</h2>
-      <p class="prose" style="color: var(--ink-2)">Everything is markdown, JSON, and one small Node script. Other coding agents can follow the same state through <code>AGENTS.md</code>. Delete the folder and the workflow is gone; your code and your feature docs stay readable.</p>
-    </div>
-<pre class="file"><b>CLAUDE.md</b>                     <i>short project rules; area detail in .claude/rules/</i>
-<b>AGENTS.md</b>                     <i>pointer for other coding agents</i>
-<b>.claude/workflow.conf</b>         <i>the project profile</i>
-<b>.claude/settings.json</b>         <i>safe allow list, deny rules, the Stop hook</i>
-<b>.claude/hooks/verify-build.js</b> <i>the build gate</i>
-<b>.claude/skills/</b>               <i>onboard feature build change learn ship pbi status</i>
-<b>.claude/agents/reviewer.md</b>    <i>read-only reviewer</i>
-<b>_features/</b>                    <i>one folder per feature + INDEX.md</i>
-<b>docs/handbook/</b>                <i>map, request lifecycle, recipes, glossary</i>
-<b>docs/decisions/</b>               <i>ADRs, only for hard-to-reverse trade-offs</i></pre>
-  </div>
-</section>
-
 <section id="faq">
   <div class="eyebrow">Questions</div>
   <h2>Before you try it</h2>
-  <details><summary>Does it work with my language or framework?</summary><p>Yes. The core is stack-agnostic: it needs a build command, a test command, and git. Stack packs add conveniences (an EF Core migration skill for .NET, permission presets for Node and Python) and you can write your own in a folder.</p></details>
-  <details><summary>Will it overwrite my CLAUDE.md or settings?</summary><p>No. <code>init</code> keeps every existing file unless you pass <code>--force</code>, and <code>update</code> only refreshes the files the kit owns (skills, the reviewer, the hook). Your config, rules, features, and docs are yours.</p></details>
-  <details><summary>How many questions will it ask me?</summary><p>Few, on purpose. A question is asked only if the code cannot answer it, a wrong guess would be expensive to undo, and reasonable people would choose differently. Everything else is decided and listed as "decisions I made for you", so you overrule by reading, not by answering.</p></details>
-  <details><summary>Does it send anything anywhere?</summary><p>No telemetry, no network calls from the CLI or the hook. The only network use is what you configure: pushing to your remote, creating a pull request, or creating a work item in your own tracker.</p></details>
-  <details><summary>What happens if the build breaks?</summary><p>The Stop hook returns the error lines to Claude and blocks it from finishing until the build is green. If nothing relevant changed since the last green build, it does not build at all.</p></details>
-  <details><summary>Can my team use it with other coding agents?</summary><p>The state lives in files, so any agent that can read markdown can follow it. <code>AGENTS.md</code> points Codex, OpenCode, and Copilot at the same documents. The skills themselves are written for Claude Code.</p></details>
-  <details><summary>Why "Sanoy"?</summary><p>It is the author's first name, Yonas, spelled backwards. The workflow was extracted from his production project and generalized so anyone can use it.</p></details>
+  <div style="margin-top: 18px">
+    <details><summary>Does it work with my language or framework?</summary><p>Yes. The core needs a build command, a test command, and git. Stack packs add conveniences (an EF Core migration skill for .NET, permission presets for Node and Python) and you can write your own in a folder.</p></details>
+    <details><summary>Will it overwrite my CLAUDE.md or settings?</summary><p>No. <code>init</code> keeps every existing file unless you pass <code>--force</code>, and <code>update</code> only refreshes the files the kit owns (skills, the reviewer, the hook). Your config, rules, features, and docs are yours.</p></details>
+    <details><summary>How many questions will it ask me?</summary><p>Few, on purpose. A question is asked only if the code cannot answer it, a wrong guess would be expensive to undo, and reasonable people would choose differently. Everything else is decided and listed as "decisions I made for you", so you overrule by reading, not by answering.</p></details>
+    <details><summary>Does it send anything anywhere?</summary><p>No telemetry, no network calls from the CLI or the hook. The only network use is what you configure: pushing to your remote, creating a pull request, or creating a work item in your own tracker.</p></details>
+    <details><summary>What happens if the build breaks?</summary><p>The Stop hook returns the error lines to Claude and blocks it from finishing until the build is green. If nothing relevant changed since the last green build, it does not build at all.</p></details>
+    <details><summary>Can my team use it with other coding agents?</summary><p>The state lives in files, so any agent that reads markdown can follow it. <code>AGENTS.md</code> points Codex, OpenCode, and Copilot at the same documents. The skills themselves are written for Claude Code.</p></details>
+    <details><summary>Why "Sanoy"?</summary><p>It is the author's first name, Yonas, spelled backwards. The workflow was extracted from his production project and generalized so anyone can use it.</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="cta">
+    <h2>Keep the speed. Lose the blindness.</h2>
+    <p>One command to install, one skill to onboard, and every feature gets a home.</p>
+    <a class="btn primary" href="#install">Install Sanoy</a>
+  </div>
 </section>
 
 <footer>
@@ -374,20 +444,29 @@ npx sanoy-ai-workflow update">Copy</button>
 
 </div>
 <script>
-document.querySelectorAll('.copy').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var text = btn.getAttribute('data-copy');
-    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function () { fallback(); });
-    } else { fallback(); }
-    function fallback() {
-      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = 'Select and copy'; }
-      document.body.removeChild(ta);
-    }
+(function () {
+  var root = document.documentElement;
+  try { var saved = localStorage.getItem('sanoy-theme'); if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved); } catch (e) {}
+  var btn = document.getElementById('theme');
+  if (btn) btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark' || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sanoy-theme', next); } catch (e) {}
   });
-});
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy'), orig = b.textContent;
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = orig; }, 1600); };
+      var fallback = function () {
+        var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { b.textContent = 'Select and copy'; }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    });
+  });
+})();
 </script>
 </body>
 </html>
