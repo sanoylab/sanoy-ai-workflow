@@ -13,7 +13,7 @@ function walk(dir) {
     if (skip.has(e.name)) continue;
     const full = path.join(dir, e.name);
     if (e.isDirectory()) { walk(full); continue; }
-    if (!/\.(md|js|json|conf|yml|ps1|txt)$|^LICENSE$/.test(e.name)) continue;
+    if (!/\.(md|js|json|conf|yml|ps1|txt|html)$|^LICENSE$/.test(e.name)) continue;
     const text = fs.readFileSync(full, 'utf8');
     const rel = path.relative(root, full);
     if (text.includes(String.fromCharCode(0x2014))) problems.push(`${rel}: contains an em dash`);
