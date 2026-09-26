@@ -131,6 +131,21 @@ nav.links a:hover { background: var(--bg-3); text-decoration: none; color: var(-
 .col.good li::before { background-color: var(--accent-soft); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E6B5E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"); }
 .col li b { color: var(--ink); font-weight: 600; }
 
+.spectrum { margin-top: 26px; border: 1px solid var(--line); border-radius: var(--r); background: var(--bg-2); padding: 22px 26px; }
+.spectrum .bar { position: relative; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--line-2), var(--accent-soft), var(--line-2)); margin: 18px 0 10px; }
+.spectrum .bar i { position: absolute; top: 50%; left: 50%; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-2); transform: translate(-50%, -50%); box-shadow: 0 0 0 4px var(--accent-soft); }
+.spectrum .ends { display: flex; justify-content: space-between; gap: 12px; font-size: .84rem; color: var(--muted); }
+.spectrum .ends b { display: block; color: var(--ink-2); font-weight: 600; font-size: .86rem; }
+.spectrum .ends span:nth-child(2) { text-align: center; } .spectrum .ends span:last-child { text-align: right; }
+.spectrum p { margin: 12px 0 0; color: var(--ink-2); font-size: .97rem; }
+.learn { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.learn .quote { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.35; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 18px; margin: 22px 0 0; font-weight: 500; }
+.modes { display: grid; gap: 12px; }
+.mode { border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); padding: 16px 18px; display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; }
+.mode code { background: var(--accent-soft); border: 0; color: var(--accent); font-weight: 500; padding: 3px 9px; border-radius: 6px; font-size: .85rem; justify-self: start; margin-top: 2px; }
+.mode p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.mode p b { color: var(--ink); font-weight: 600; }
+@media (max-width: 800px) { .learn { grid-template-columns: 1fr; gap: 28px; } .mode { grid-template-columns: 1fr; gap: 6px; } }
 .cmds { display: grid; gap: 10px; margin-top: 22px; }
 .row { display: grid; grid-template-columns: 290px 1fr auto; gap: 18px; align-items: center; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 18px; }
 .row code { background: transparent; border: 0; padding: 0; color: var(--accent); font-weight: 500; font-size: .95rem; white-space: nowrap; }
@@ -178,6 +193,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
     </a>
     <nav class="links" aria-label="Site">
       <a class="hide" href="#why">Why</a>
+      <a class="hide" href="#learning">Learning</a>
       <a class="hide" href="#workflow">Workflow</a>
       <a href="#install">Install</a>
       <a href="https://github.com/sanoylab/sanoy-ai-workflow">GitHub</a>
@@ -194,7 +210,7 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
   <div>
     <span class="pill"><i></i> My personal AI workflow, open-sourced</span>
     <h1>Agentic engineering, with the engineer in the loop.</h1>
-    <p class="lead">This is the workflow I use with Claude Code every day. The AI plans, builds, and ships. I decide, verify, and understand, without babysitting every keystroke. It is a set of plain files you install in one command, and it works for any stack.</p>
+    <p class="lead">The workflow I use with Claude Code on most of my projects. The AI plans, builds, and ships. I decide, verify, and understand, without babysitting every keystroke. And it teaches me what it built, so I can maintain the code without it.</p>
     <div class="actions">
       <span class="cmd"><span class="p">$</span> npx sanoy-ai-workflow init <button type="button" data-copy="npx sanoy-ai-workflow init">Copy</button></span>
       <a class="btn" href="https://github.com/sanoylab/sanoy-ai-workflow"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg> GitHub</a>
@@ -240,25 +256,54 @@ footer { border-top: 1px solid var(--line); padding-top: 26px; margin-top: 64px;
     <div class="col bad">
       <h3><i>&times;</i> What vibe coding costs you</h3>
       <ul>
-        <li><b>Code nobody understands.</b> It works today; nobody can explain why, so nobody dares to change it.</li>
-        <li><b>Changes break things you did not know existed.</b> There is no map of what a feature touches.</li>
-        <li><b>Tests written after the fact,</b> to pass, or not at all.</li>
-        <li><b>Decisions made silently.</b> Scope, data model, security behavior: chosen by the agent, noticed later.</li>
-        <li><b>The spec lives in a chat scroll</b> and is gone by next week.</li>
-        <li><b>You become the babysitter.</b> Nothing else checks the work, so you read every line, or you stop reading.</li>
+        <li><span><b>Code nobody understands.</b> It works today; nobody can explain why, so nobody dares to change it.</span></li>
+        <li><span><b>Changes break things you did not know existed.</b> There is no map of what a feature touches.</span></li>
+        <li><span><b>Tests written after the fact,</b> to pass, or not at all.</span></li>
+        <li><span><b>Decisions made silently.</b> Scope, data model, security behavior: chosen by the agent, noticed later.</span></li>
+        <li><span><b>The spec lives in a chat scroll</b> and is gone by next week.</span></li>
+        <li><span><b>You become the babysitter.</b> Nothing else checks the work, so you read every line, or you stop reading.</span></li>
       </ul>
     </div>
     <div class="col good">
       <h3><i>&#10003;</i> What this workflow does instead</h3>
       <ul>
-        <li><b>A plan you approve before any code,</b> with the decisions the agent made listed so you overrule by reading.</li>
-        <li><b>Tests first,</b> derived from acceptance criteria, then the layers in order with checkpoint commits.</li>
-        <li><b>A build gate the agent cannot skip:</b> it rebuilds before it stops and blocks on errors.</li>
-        <li><b>A second agent reviews with fresh eyes</b> for correctness, architecture, data access, security, and scope.</li>
-        <li><b>One living document per feature:</b> what it does now, its code map, every change and its root cause.</li>
-        <li><b>An explicit stop-and-ask list</b> (migrations, shared infrastructure, security, scope creep) so you are asked when it matters and not otherwise.</li>
-        <li><b>Learning modes</b> (auto, pair, coach) and a quiz, so you understand the code without watching it being typed.</li>
+        <li><span><b>A plan you approve before any code,</b> with the decisions the agent made listed so you overrule by reading.</span></li>
+        <li><span><b>Tests first,</b> derived from acceptance criteria, then the layers in order with checkpoint commits.</span></li>
+        <li><span><b>A build gate the agent cannot skip:</b> it rebuilds before it stops and blocks on errors.</span></li>
+        <li><span><b>A second agent reviews with fresh eyes</b> for correctness, architecture, data access, security, and scope.</span></li>
+        <li><span><b>One living document per feature:</b> what it does now, its code map, every change and its root cause.</span></li>
+        <li><span><b>An explicit stop-and-ask list</b> (migrations, shared infrastructure, security, scope creep) so you are asked when it matters and not otherwise.</span></li>
+        <li><span><b>Learning modes</b> (auto, pair, coach) and a quiz, so you understand the code without watching it being typed.</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="eyebrow">Where this sits</div>
+  <h2>One workflow among many. The one I reach for most.</h2>
+  <p class="sub prose">There are many good ways to do agentic engineering. On some projects I let the agents run far ahead; on others I use them very carefully, line by line. This workflow is the middle ground, and it is what I use on roughly two out of three projects. Take it as a working default, not a doctrine.</p>
+  <div class="spectrum">
+    <div class="ends"><span><b>Agents run far ahead</b>throwaway tools, prototypes, spikes</span><span><b>This workflow</b>products I have to keep changing</span><span><b>Very careful, line by line</b>security-critical or unfamiliar code</span></div>
+    <div class="bar"><i></i></div>
+    <p>The dial is yours: <code>quick</code> and <code>deep</code> on planning, <code>auto</code>, <code>pair</code>, and <code>coach</code> on building. The defaults sit in the middle.</p>
+  </div>
+</section>
+
+<section id="learning">
+  <div class="learn">
+    <div>
+      <div class="eyebrow">The part that matters most</div>
+      <h2>Ship fast, and still understand your own system.</h2>
+      <p class="sub">Planning, building, and shipping with an agent is a solved problem; many tools do it. The problem I wanted to solve is what comes after: a codebase I depend on but did not write. So this workflow makes the AI teach me what it implemented, feature by feature, while it is fresh.</p>
+      <p class="quote">If the agents disappeared tomorrow, I should still be able to fix a bug, add a feature, and explain the system on a whiteboard.</p>
+    </div>
+    <div class="modes">
+      <div class="mode"><code>walkthrough</code><p><b>After every build.</b> One real request traced through the code, file and line at each hop, the patterns used and why, and a recipe for the next change. Written into the feature's document, not lost in chat.</p></div>
+      <div class="mode"><code>pair</code><p><b>The AI writes the tests, scaffolding, and wiring.</b> It leaves the one to three core pieces for you, with a hint and an example to copy. The tests already exist, so you know when you are done. Bug fixes in this mode are the fastest way to learn a codebase.</p></div>
+      <div class="mode"><code>coach</code><p><b>You write it.</b> The AI gives one step at a time, reviews each, and runs the tests. For the parts of the system you do not know yet.</p></div>
+      <div class="mode"><code>quiz</code><p><b>Five questions, graded honestly.</b> Where does X live, what happens after Y, why this pattern, what breaks if Z changes. Scores go in the feature's document so you know what to revisit.</p></div>
+      <div class="mode"><code>handbook</code><p><b>Written for a developer without AI.</b> A map of the system, one request traced end to end, recipes for doing things by hand, and a glossary the AI keeps current.</p></div>
     </div>
   </div>
 </section>
